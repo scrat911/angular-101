@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-101-f6a1d": {
+      "hosting": {
+        "a-blog": [
+          "angular-101-f6a1d"
+        ]
+      }
+    }
+  }
+}
