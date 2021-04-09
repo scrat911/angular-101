@@ -14,13 +14,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { RelativeDatePipe } from './relative-date.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     WallComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RelativeDatePipe
   ],
   imports: [
     BrowserModule,

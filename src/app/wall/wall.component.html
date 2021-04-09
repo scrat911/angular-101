@@ -1,9 +1,11 @@
+<script src="https://gist.github.com/JonCatmull/e00afb1c96298a4e386ea1b5d091702a.js"></script>
+
 
   <li class="text" *ngFor="let item of items | async">
     <mat-card class="post-card">
       <mat-card-header>
         <mat-card-title>{{item.title}}</mat-card-title>
-        <mat-card-subtitle>{{item.author}} - <span am-time-ago={{item.date}}></span>
+        <mat-card-subtitle>{{item.author}} - {{item.date['seconds'] * 1000| relativeDate}}
         </mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image src={{item.img}}>
