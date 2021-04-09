@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class WallComponent implements OnInit {
 
-  items: Observable<any[]>; // TODO : ask wdf is this.
+  items: Observable<any[]>;
+
   constructor(firestore: AngularFirestore){
     this.items = firestore.collection('posts').valueChanges();
   }
