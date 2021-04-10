@@ -17,17 +17,19 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public auth: AngularFireAuth,
-    public router: Router,
     private fb: FormBuilder
   ) {}
 
   googleLogin() {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    this.router.navigate(['wall']);
+  }
+  login(){
+    let email = this.loginForm.get('email').value;
+    let password = this.loginForm.get('password').value;
+    console.log(this.auth.signInWithEmailAndPassword(email, password));
   }
   logout() {
     this.auth.signOut();
-    this.router.navigate(['login']);
   }
 
   ngOnInit(): void {}

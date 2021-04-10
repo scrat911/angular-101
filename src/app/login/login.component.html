@@ -6,7 +6,7 @@
 </div>
 <ng-template #showLogin>
   <div class="login-form">
-    <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" novalidate (ngSubmit)="login()">
       <mat-card class="form-card">
         <mat-card-header>
           <mat-card-title>Please Login :</mat-card-title>
@@ -32,6 +32,7 @@
             <div class="col">
               <mat-form-field class="full-width">
                 <input
+                type="password"
                   matInput
                   placeholder="Enter your password"
                   formControlName="password"
