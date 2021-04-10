@@ -1,17 +1,28 @@
-<script src="https://gist.github.com/JonCatmull/e00afb1c96298a4e386ea1b5d091702a.js"></script>
+<button
+  (click)="toggleForm('post')"
+  mat-fab
+  color="primary"
+  aria-label="Write post button"
+  class="post-btn"
+>
+  <mat-icon>post_add</mat-icon>
+</button>
 
+<div class="post-form">
+  <app-post-editor *ngIf="showPostForm"></app-post-editor>
+</div>
 
-  <li class="text" *ngFor="let item of items | async">
-    <mat-card class="post-card">
-      <mat-card-header>
-        <mat-card-title>{{item.title}}</mat-card-title>
-        <mat-card-subtitle>{{item.author}} - {{item.date['seconds'] * 1000| relativeDate}}
-        </mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src={{item.img}}>
-      <mat-card-content>
-
-        {{item.body}}
-      </mat-card-content>
-      </mat-card>
-  </li>
+<li class="text" *ngFor="let item of items | async">
+  <mat-card class="post-card">
+    <mat-card-header>
+      <mat-card-title>{{ item.title }}</mat-card-title>
+      <mat-card-subtitle
+        >{{ item.author }} - {{ item.date["seconds"] * 1000 | relativeDate }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{ item.img }}" />
+    <mat-card-content>
+      {{ item.body }}
+    </mat-card-content>
+  </mat-card>
+</li>

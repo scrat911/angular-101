@@ -14,7 +14,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { RelativeDatePipe } from './relative-date.pipe';
+import { PostEditorComponent } from './post-editor/post-editor.component';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { RelativeDatePipe } from './relative-date.pipe';
     WallComponent,
     LoginComponent,
     RegisterComponent,
-    RelativeDatePipe
+    RelativeDatePipe,
+    PostEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -31,11 +36,14 @@ import { RelativeDatePipe } from './relative-date.pipe';
     AppRoutingModule,
     LayoutModule,
     MatToolbarModule,
+    MatMenuModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
