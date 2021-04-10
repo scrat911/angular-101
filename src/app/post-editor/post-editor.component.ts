@@ -7,7 +7,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./post-editor.component.css']
 })
 export class PostEditorComponent {
-  addressForm = this.fb.group({
+  postForm = this.fb.group({
     title: [null, Validators.required],
     body: [null, Validators.required],
   });

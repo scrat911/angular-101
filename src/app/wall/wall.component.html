@@ -8,9 +8,7 @@
   <mat-icon>post_add</mat-icon>
 </button>
 
-<div class="post-form">
-  <app-post-editor *ngIf="showPostForm"></app-post-editor>
-</div>
+<app-post-editor *ngIf="showPostForm"></app-post-editor>
 
 <li class="text" *ngFor="let item of items | async">
   <mat-card class="post-card">

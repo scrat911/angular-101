@@ -1,15 +1,61 @@
 <div *ngIf="auth.user | async as user; else showLogin">
   <h1>Hello {{ user.displayName }}!</h1>
-  <button (click)="logout()">Logout</button>
+  <button mat-raised-button color="primary" (click)="logout()">
+    <mat-icon>logout</mat-icon> Logout
+  </button>
 </div>
 <ng-template #showLogin>
-  <p>Please login.</p>
-  <div class="example-container">
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="pat@example.com" [formControl]="email" required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-    </mat-form-field>
+  <div class="login-form">
+    <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
+      <mat-card class="form-card">
+        <mat-card-header>
+          <mat-card-title>Please Login :</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input
+                  matInput
+                  placeholder="Enter your email"
+                  formControlName="email"
+                />
+                <mat-error
+                  *ngIf="loginForm.controls['email'].hasError('required')"
+                >
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input
+                  matInput
+                  placeholder="Enter your password"
+                  formControlName="password"
+                />
+                <mat-error
+                  *ngIf="loginForm.controls['email'].hasError('required')"
+                >
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+        <mat-card-footer>
+
+          <br>
+          <button mat-raised-button color="warn" (click)="googleLogin()">
+            <mat-icon>open_in_new</mat-icon>  Login with Google
+          </button>
+        </mat-card-footer>
+      </mat-card>
+    </form>
   </div>
-  <button (click)="googleLogin()">Login with Google</button>
 </ng-template>

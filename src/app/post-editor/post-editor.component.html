@@ -1,5 +1,5 @@
-<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
-  <mat-card class="shipping-card">
+<form [formGroup]="postForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="post-form">
     <mat-card-header>
       <mat-card-title>Create a New Entry</mat-card-title>
     </mat-card-header>
@@ -9,7 +9,7 @@
           <mat-form-field class="full-width">
             <input matInput placeholder="Title" formControlName="title" />
             <mat-error
-              *ngIf="addressForm.controls['title'].hasError('required')"
+              *ngIf="postForm.controls['title'].hasError('required')"
             >
               Title is <strong>required</strong>
             </mat-error>
@@ -25,7 +25,7 @@
               formControlName="body"
             ></textarea>
             <mat-error
-              *ngIf="addressForm.controls['body'].hasError('required')"
+              *ngIf="postForm.controls['body'].hasError('required')"
             >
               Body <strong>required</strong>
             </mat-error>

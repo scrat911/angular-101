@@ -2,9 +2,9 @@
   width: 100%;
 }
 
-.shipping-card {
-  min-width: 120px;
-  margin: 20px auto;
+.post-form{
+  margin: auto;
+  max-width: 40%;
 }
 
 .mat-radio-button {
