@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AppRoutingModule } from './app-routing.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +9,19 @@ import { AppRoutingModule } from './app-routing.module';
 })
 export class AppComponent {
   title = 'A Blog';
-  constructor(public auth: AngularFireAuth, public router: AppRoutingModule) {}
+  constructor(public auth: AngularFireAuth, public router: Router) {}
 
   logout() {
     this.auth.signOut();
-    this.router;
+  }
+
+  ngOnInit() {
+    this.auth.authState.subscribe((user) => {
+      if (user) {
+        this.router.navigate(['wall']);
+      } else {
+        this.router.navigate(['login']);
+      }
+    });
   }
 }
