@@ -1,1 +1,99 @@
-<p>register works!</p>
+
+  <div class="register-form">
+    <mat-card class="form-card">
+      <form
+        [formGroup]="registerForm"
+        novalidate
+        (ngSubmit)="registerUser(registerForm.value)"
+      >
+        <mat-card-header>
+          <mat-card-title>Register :</mat-card-title>
+          <br />
+        </mat-card-header>
+        <mat-card-content>
+          <div class="errors" *ngIf="showErrors">
+            <p>{{ errors }}!</p>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input
+                  matInput
+                  placeholder="Enter your name"
+                  formControlName="name"
+                />
+                <mat-error
+                  *ngIf="registerForm.controls['name'].hasError('required')"
+                >
+                  Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input
+                  type="email"
+                  matInput
+                  placeholder="Enter your email"
+                  formControlName="email"
+                />
+                <mat-error
+                  *ngIf="registerForm.controls['email'].hasError('required')"
+                >
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input
+                  type="password"
+                  matInput
+                  placeholder="Enter your password"
+                  formControlName="password"
+                />
+                <mat-error
+                  *ngIf="registerForm.controls['email'].hasError('required')"
+                >
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input
+                  type="password"
+                  matInput
+                  placeholder="Re Enter your password"
+                  formControlName="confirm"
+                />
+                <mat-error
+                  *ngIf="registerForm.controls['confirm'].hasError('required')"
+                >
+                  Password confirmation is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!registerForm.valid"
+          >
+            Submit
+          </button>
+        </mat-card-actions>
+      </form>
+      <mat-card-footer>
+      </mat-card-footer>
+    </mat-card>
+  </div>

@@ -31,8 +31,7 @@
 }
 
 .errors{
-  color: red;
-  background-color: whitesmoke;
+  color: #f44336;
   font-size: 16pt;
   padding: auto;
 }
