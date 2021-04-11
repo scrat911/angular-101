@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(value: any):void{
-    this.auth.createUserWithEmailAndPassword(value['email'], value['password']);
+    this.auth.createUserWithEmailAndPassword(value['email'], value['password']).catch((error: firebase.FirebaseError) => {this.errors = error.message});
   }
 
   ngOnInit(): void {
