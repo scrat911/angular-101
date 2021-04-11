@@ -15,12 +15,13 @@ export class WallComponent implements OnInit {
   items: Observable<any[]>;
 
   constructor(firestore: AngularFirestore) {
-    this.items = firestore.collection('posts').valueChanges();
-    //TODO : query orderBy desc..
+    this.items = firestore
+      .collection('posts', (ref) => ref.orderBy('date', 'desc'))
+      .valueChanges();
   }
 
   get showPostForm() {
-    return this.form === 'post';
+    return this.form === 'None';
   }
 
   toggleForm(name: FormName) {
