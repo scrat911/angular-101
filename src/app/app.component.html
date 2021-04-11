@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span>{{title}}</span>
+  <button mat-button routerLink="/">{{title}}</button>
   <span class="spacer"></span>
   <div *ngIf="auth.user | async as user; else showRegisterButton">
   <button class="menu" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Account button">

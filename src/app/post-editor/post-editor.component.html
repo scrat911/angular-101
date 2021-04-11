@@ -1,4 +1,4 @@
-<form [formGroup]="postForm" novalidate (ngSubmit)="onSubmit()">
+<form [formGroup]="postForm" novalidate (ngSubmit)="submitEntry(postForm.value)">
   <mat-card class="post-form">
     <mat-card-header>
       <mat-card-title>Create a New Entry</mat-card-title>
@@ -14,6 +14,13 @@
               Title is <strong>required</strong>
             </mat-error>
           </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="full-width">
+            <input type="file" (change)="upload($event)" accept=".png,.jpg" placeholder="img" formControlName="img" />
+          </div>
         </div>
       </div>
       <div class="row">
@@ -34,7 +41,7 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Submit</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!postForm.valid">Submit</button>
     </mat-card-actions>
   </mat-card>
 </form>

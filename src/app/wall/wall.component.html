@@ -15,7 +15,7 @@
     <mat-card-header>
       <mat-card-title>{{ item.title }}</mat-card-title>
       <mat-card-subtitle
-        >{{ item.author }} - {{ item.date["seconds"] * 1000 | relativeDate }}
+        >{{ item.author }} - {{ item.date | relativeDate }}
       </mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="{{ item.img }}" />
