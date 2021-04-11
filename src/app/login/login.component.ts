@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import firebase from 'firebase/app';
 
@@ -15,18 +14,22 @@ export class LoginComponent implements OnInit {
     password: [null, Validators.required],
   });
 
+  errors = "";
+
   constructor(
     public auth: AngularFireAuth,
     private fb: FormBuilder
   ) {}
 
+  get showErrors() {
+    return this.errors != "";
+  }
+
   googleLogin() {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
-  login(){
-    let email = this.loginForm.get('email').value;
-    let password = this.loginForm.get('password').value;
-    console.log(this.auth.signInWithEmailAndPassword(email, password));
+  login(value: any):void{
+      this.auth.signInWithEmailAndPassword(value['email'], value['password']).catch((error: firebase.FirebaseError) => {this.errors = error.message});
   }
   logout() {
     this.auth.signOut();

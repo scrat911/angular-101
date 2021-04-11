@@ -6,16 +6,25 @@
 </div>
 <ng-template #showLogin>
   <div class="login-form">
-    <form [formGroup]="loginForm" novalidate (ngSubmit)="login()">
-      <mat-card class="form-card">
+    <mat-card class="form-card">
+      <form
+        [formGroup]="loginForm"
+        novalidate
+        (ngSubmit)="login(loginForm.value)"
+      >
         <mat-card-header>
           <mat-card-title>Please Login :</mat-card-title>
+          <br />
         </mat-card-header>
         <mat-card-content>
+          <div class="errors" *ngIf="showErrors">
+            <p>{{ errors }}!</p>
+          </div>
           <div class="row">
             <div class="col">
               <mat-form-field class="full-width">
                 <input
+                  type="email"
                   matInput
                   placeholder="Enter your email"
                   formControlName="email"
@@ -32,7 +41,7 @@
             <div class="col">
               <mat-form-field class="full-width">
                 <input
-                type="password"
+                  type="password"
                   matInput
                   placeholder="Enter your password"
                   formControlName="password"
@@ -47,16 +56,22 @@
           </div>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button color="primary" type="submit">Submit</button>
-        </mat-card-actions>
-        <mat-card-footer>
-
-          <br>
-          <button mat-raised-button color="warn" (click)="googleLogin()">
-            <mat-icon>open_in_new</mat-icon>  Login with Google
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!loginForm.valid"
+          >
+            Submit
           </button>
-        </mat-card-footer>
-      </mat-card>
-    </form>
+        </mat-card-actions>
+      </form>
+      <mat-card-footer>
+        <br />
+        <button mat-raised-button color="warn" (click)="googleLogin()">
+          <mat-icon>open_in_new</mat-icon> Login with Google
+        </button>
+      </mat-card-footer>
+    </mat-card>
   </div>
 </ng-template>

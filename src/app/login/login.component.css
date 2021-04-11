@@ -29,3 +29,10 @@
 .col:last-child {
   margin-right: 0;
 }
+
+.errors{
+  color: red;
+  background-color: whitesmoke;
+  font-size: 16pt;
+  padding: auto;
+}
